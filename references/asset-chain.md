@@ -2,6 +2,26 @@
 
 本文给出 A 层资产的实际出图写法，并附一个不改变 A/B/C 分层的次要角色 GPT Image 2 直出分支。链条分两段，职责不同，不能互换。
 
+## 题材与设计依据
+
+第一次写资产提示词前，先给出一段简短的设计依据：题材与叙事气质、时代及世界规则、已有设计来源，以及与本批资产相关的允许元素和排除项。已有依据直接复用；剧本或用户设定变化时，只更新受影响的部分。
+
+根据用户明确设定和剧本内容判断，区分已确认内容、合理推断与未知。题材明确但时代未明时，不自行指定朝代或技术水平；只有缺项会改变资产的关键形制、功能或世界规则时才提出聚焦问题，其余已确定工作继续。用户指定的混搭、架空或反常设计按其设定执行，不用常见题材印象覆盖。
+
+将题材落实为每项资产可见的设计选择，并结合它在故事中的身份和用途：
+
+| 资产 | 需要落实的设计 |
+| --- | --- |
+| 人物 | 与身份、职业、阶层及所属群体相符的服装结构、发型、配饰、材质和使用痕迹 |
+| 场景 | 与地点功能、生活条件及技术或超自然规则相符的建筑、空间组织、陈设、材料和尺度 |
+| 道具 | 与使用者、用途及世界规则相符的形制、结构、材料和功能实现方式 |
+
+提示词写出本资产实际采用的设计和必要排除项，不能只附一句“符合题材”。例如，架空修行题材中的普通农具与法器可以有不同设计依据；不能仅凭“仙侠”标签就给所有器物添加发光符文。
+
+题材与画风分别处理：水墨、3DCG 等媒介描述表现方式，不能代替上述设计选择。画风参考只提供其声明的职责，不自动授权借用不符合本项目设定的服饰、建筑或器物。已有并锁定的设计如与新增题材要求冲突，先指出具体差异和需要调整的范围，不静默重设计。
+
+本项适用于 MJ 画风基准、GPT 资产图、次要角色直出，以及首帧中用文字呈现的 B/C 层资产；跳过 MJ 段仍要完成设计核对。题材标签不改变 A/B/C 判据；若具体设计改变了文字可复现性，则回到交叉表重算受影响资产。
+
 ## 为什么分两段
 
 | 段 | 负责 | 不负责 |
@@ -27,7 +47,7 @@ MJ 段的产出是画风基准。当画风已由其他方式确定——用户�
 
 写法要点：
 
-- 写清媒介与质感。这是本段的唯一目的，其余从简。
+- 沿用题材设计依据，写清媒介与质感；本段用于确认画风，资产形制不超出已确定的设计约束，其余从简。
 - 人物用半身或全身单人，构图简单，不做设定板尝试。
 - 场景用主机位广角，无人。
 - 道具用近景单件。
@@ -39,7 +59,7 @@ MJ 段的产出是画风基准。当画风已由其他方式确定——用户�
 
 ## 第二段：GPT Image 2 资产图
 
-以 MJ 图作**画风参考**，不是身份来源。身份、结构、配色从文字设定与世界观来。
+以 MJ 图作**画风参考**，不是身份来源。身份、结构、配色从文字设定、题材设计依据与世界观来。
 
 ### 参考图职责必须逐项声明
 
@@ -82,6 +102,8 @@ MJ 段的产出是画风基准。当画风已由其他方式确定——用户�
 
 ```text
 A professional character reference sheet of [character], [from the supplied portrait / extended image / full-body reference, OR from the confirmed design when no image exists]. Preserve [identity, head-neck-shoulder relationships, build, costume and palette]. Complete unseen anatomy conservatively, consistent with the established character design.
+
+[Established genre, period and world rules relevant to this character. Concrete costume, hair, ornament and material choices appropriate to the character's role and setting; exclude incompatible elements while preserving explicitly established exceptions.]
 
 Pure white background, 16:9 landscape canvas: left 55% costume views, right 45% portraits.
 

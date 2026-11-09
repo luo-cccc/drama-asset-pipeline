@@ -5,8 +5,8 @@
 ## 主流程
 
 ```text
-剧本盘点 → 镜头清单 → 资产×镜头交叉表 → A/B/C 分层
-        → 定画风 → 资产图或可选直出 → 平台路由
+剧本盘点（含题材与世界设定） → 镜头清单 → 资产×镜头交叉表 → A/B/C 分层
+        → 定设计依据与画风 → 资产图或可选直出 → 平台路由
         → 首尾帧 → 逐镜提交 → 返图检查
 ```
 
@@ -14,6 +14,7 @@
 
 ## 核心原则
 
+- **资产设计先核对题材。** 出图前根据剧本与用户设定，把题材、时代和世界规则落实为人物服饰、场景建筑、道具形制等可见设计；已有画风也要核对。具体写法见 [题材与设计依据](references/asset-chain.md#题材与设计依据)。
 - **分层看可复现性和出现镜数。** 文字可复现的是 C 层；不可复现且出现至少两镜的是 A 层；不可复现但只出现一镜的是 B 层。完整判定见 [asset-tiering.md](references/asset-tiering.md)。
 - **状态沿时间轴管理。** 跨镜持续的淋湿、受伤、损坏等建立版本；表情、姿态、持物手等只属于镜头内容。变化发生在镜头内部时，首帧取变化前状态，尾帧取镜头结束状态，下一镜再切换新版本。
 - **视频参考设定板使用固定版式。** 16:9 横版、纯白底，左侧约 55% 为颈部至脚部的服装三视图，省略头部并保留其上方占位；右侧约 45% 为四头像，正常展示头发和识别性发饰。统一身体尺度、弱透视和接触基线。完整格式和 GPT Image 2 次要角色直出分支见 [asset-chain.md](references/asset-chain.md)。
@@ -28,11 +29,11 @@
 | [SKILL.md](SKILL.md) | 技能入口、执行顺序、任务路由和交付边界 |
 | [asset-tiering.md](references/asset-tiering.md) | A/B/C 分层、状态版本和生效镜号 |
 | [asset-registry.md](references/asset-registry.md) | 镜头清单、交叉表、资产账本、版本登记和重算 |
-| [asset-chain.md](references/asset-chain.md) | 两段出图链、设定图版式、首帧/尾帧和提示词输入职责 |
+| [asset-chain.md](references/asset-chain.md) | 题材设计依据、两段出图链、设定图版式、首帧/尾帧和提示词输入职责 |
 | [scene-continuity.md](references/scene-continuity.md) | 重复地点的来源版本、证据等级和用户采纳 |
 | [outpainting.md](references/outpainting.md) | 扩图、裁切、换机位和固定机位编辑边界 |
 | [reference-budget.md](references/reference-budget.md) | 平台能力、路由、槽位预算、上传清单和提交前检查 |
-| [review.md](references/review.md) | 结构、身份、状态、画风、连续性和扩图返图检查 |
+| [review.md](references/review.md) | 题材适配、结构、身份、状态、画风、连续性和扩图返图检查 |
 | [agents/openai.yaml](agents/openai.yaml) | 界面名称、简介和默认调用提示 |
 
 ## 交付边界
