@@ -49,6 +49,7 @@ MJ 段的产出是画风基准。当画风已由其他方式确定——用户�
 | --- | --- | --- |
 | MJ 画风基准 | 媒介、质感、光照倾向、配色关系 | 原构图、原姿态、原背景、画幅 |
 | 目标角色身份图 | 脸、骨相、体型、服装结构 | 原背景、原棚拍光、画外物件 |
+| 人物设定板（用于首帧合成） | 身体、服装、脸和发型，按“首帧合成”节分区取用 | 设定板的展示裁切、分栏和背景 |
 | 场景结构图 | 已看见的结构、地标、通路、尺度 | 原有人物、原天气时段 |
 | 版式参考 | 分区与排布 | 其中的人物、场景、配色 |
 
@@ -56,24 +57,42 @@ MJ 段的产出是画风基准。当画风已由其他方式确定——用户�
 
 产出两类：身份母图（确立脸），多视图设定板（确立服装与体型的各角度关系）。
 
-两条有机制依据的写法：
+设定板的生成与底色约定：
 
 **多视图必须单次生成。** 分次生成各视角必然漂移——两次生成得不到同一张脸。把全部视角放在一张图里一次出，视角之间才可能同源。
 
-**底色用中性灰，不用纯白。** 纯白与主体形成最大对比，而视频模型在高对比边缘处最容易放大错误，把边缘呼吸和轮廓不稳定烘进运动里。中性灰降低主体与背景对比，被当作参考帧读取时边缘更干净。同时要求背景中性但**主体不被中性化**：肤色按设计的真实色呈现，不被背景染冷或冲淡。
+**设定板底色使用纯白。** 这是本工作流采用的版式要求；角色肤色、服装配色和材质按已确认设计呈现，不因背景而冲淡或改变。
 
 #### 视频参考设定板的统一格式
 
-设定板采用固定的 16:9 横版画布，版式和身体占位先固定，再填入当前角色的实际设计。视频参考板使用中性灰背景；这里的中性灰是参考帧边缘稳定的工作底色，不改变角色本身的肤色、服装配色或材质。
+设定板采用固定的 16:9 横版画布和纯白背景，版式和身体占位先固定，再填入当前角色的实际设计。
 
-- **左侧约 55%**：正面、严格 90 度侧面、背面的颈部至脚部服装三视图。
+- **左侧约 55%**：正面、严格 90 度侧面、背面的颈部至脚部服装三视图，只展示颈部以下的身体与服装，头部省略。
 - **右侧约 45%**：2×2 头像格，依次为正面、45 度、严格侧面、正脸近景。
-- 左侧每个视图放在等大的完整人物展示区域中，保留原本属于头部的上方留白，在颈部形成整洁的展示裁切。颈下身体保持完整人物中的尺度，只通过统一缩放和间距适应版面，不拉长、压窄或重新设计人体比例。
-- 左侧服装三视图只隐藏头发和发饰，保留领口、披风、下摆及其他服装层次；这是展示规则，不是改变发型或解剖结构。右侧头像正常显示头发和识别性发饰。
+- 左侧每个视图放在等大的完整人物展示区域中，头部原本占据的位置保留纯白留白，在颈部形成整洁的展示裁切。“完整人物展示区域”用于保留完整人物中的身体尺度，不要求在该区域画出头部。颈下身体只通过统一缩放和间距适应版面，保留宽高关系，不拉长、压窄或重新设计人体比例。
+- 左侧省略整个头部，也不展示头发和发饰；保留领口、披风、下摆及其他服装层次。头部留白是设定板的展示裁切，不改变角色解剖或原定发型。右侧头像正常显示头发和识别性发饰。
 - 三视图共享同一套身高比例、服装结构、扣件与装饰位置、配色、弱透视和接触基线；对应的颈根、肩线、腰胯和脚部高度对齐。观察方向可以变化，光源方向和呈现完成度保持一致，不为每个视图重新布成正面平光。
 - 右侧头像只改变展示倍率和取景，不改变同一张脸、头颈肩关系、肤色、发型结构或识别性配饰。头像不与左侧人物按画面像素大小计算头身比例。
 
 这一格式是资产图的默认工作版式，不要求先单独生成全身批准图，也不把三视图拆成多次生成。全部视角在一次生成中完成，才能尽量保持同源。用户明确要求其他画幅、视图数量、背景或姿态时，以本次要求覆盖默认格式，并把覆盖项写清。
+
+#### 设定板提示词模板
+
+将方括号内容替换为本角色的已确认设计；有源图时逐项声明其职责。以下正文供 GPT Image 2 使用，画幅和无文字要求直接写入自然语言，不附加 Midjourney 的 `--ar`、`--raw`、`--s` 或 `--no` 参数。
+
+```text
+A professional character reference sheet of [character], [from the supplied portrait / extended image / full-body reference, OR from the confirmed design when no image exists]. Preserve [identity, head-neck-shoulder relationships, build, costume and palette]. Complete unseen anatomy conservatively, consistent with the established character design.
+
+Pure white background, 16:9 landscape canvas: left 55% costume views, right 45% portraits.
+
+LEFT: front, exact 90-degree side and back neck-to-foot costume views. Omit the head entirely from these costume views, with a clean presentation crop at the neck. Place each in an equally sized complete-figure presentation area, leaving white space for the omitted head above the neck crop. Retain the body's scale within the complete character. Fit views by uniform scaling and spacing, preserving width-to-height relationships. Hide hair and hair ornaments only in these costume views; preserve clothing layers. [Character-appropriate neutral stance and complete anatomy below the neck.] Consistent weak perspective, corresponding anatomical levels and one shared contact baseline.
+
+RIGHT: a 2x2 portrait grid, frontal, 45-degree, exact side profile and closer frontal facial portrait. Preserve the same intrinsic head, neck and shoulder relationships; only display magnification changes. Show the established hair and identifying hair ornaments, framing identifying features appropriately.
+
+[Reference-specific face, hair, costume construction, palette and materials. Conservative completion of hidden design details, consistently repeated across views.]
+
+[Selected finish and lighting.] No text, labels, logos or watermarks.
+```
 
 #### 次要角色的 GPT Image 2 直出分支（可选）
 
@@ -120,6 +139,8 @@ GPT Image 2 直出提示词沿用上述版式、身体占位和视图对齐规�
 | B | 完整文字身份描述；若用户明确使用次要角色直出板，可在图像合成阶段一次性使用该来源，不进入平台参考槽位 |
 | C | 简短文字描述，只写本镜可见的部分 |
 
+使用人物设定板合成首帧时，提示词须明确：左侧三视图提供身体比例、服装结构与配色；右侧头像提供脸、发型、发饰及头颈肩关系。按本镜景别、姿态与遮挡关系组合角色的可见部分，光照与背景按本镜场景组织。设定板的分栏、多视图排布、纯白底、颈部裁切和头部留白只属于展示格式，不作为本镜的构图、背景或角色解剖依据。
+
 C 层出现在画面里就照写。"不出图"指不做资产图，不是不出现在画面里；写法从简，给类别、大致形貌和位置即可，不追求跨镜一致。
 
 - 写镜头开始的状态，不写镜头里的主要动作。
@@ -154,7 +175,7 @@ C 层出现在画面里就照写。"不出图"指不做资产图，不是不出�
 
 **不生成图片。** 本文给的是提示词写法。
 
-**资产图的身份保持率没有证据。** 单次生成多视图、中性灰底这两条有机制说明，但缺 A/B 数据。GPT Image 2 在这条链上的实际表现需要实测，不预先承诺。
+**资产图的身份保持率没有证据。** 单次生成多视图和上述版式是本工作流的出图约定，缺 A/B 数据。GPT Image 2 在这条链上的实际表现需要实测，不预先承诺。
 
 **定点编辑的能力范围未经完整验证。** 编辑端点以首图为编辑对象、遮罩只作用于首图是文档行为；具体编辑任务能否达成需逐项实测。
 

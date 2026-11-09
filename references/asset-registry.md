@@ -145,12 +145,13 @@ B 层不进资产库，但它的身份仍需在那一镜里成立。默认在该
     asset_images  = [CH-01-sheet-v1 视频参考设定板]
     edit_sources  = [
       source_image=CH-01-sheet-v1,
-      operation=OUTPAINT,
+      operation=CROP_REPAIR,
       affected_edges=RIGHT,
-      natural_boundary=补齐被裁掉的披风边缘后停止，余下区域接续中性背景,
+      natural_boundary=补齐画布右边缘意外裁掉且已有设计依据的披风边缘后停止，余下区域接续源图背景（默认纯白）,
+      preserved=原分区、视图排布、身体尺度、接触基线、左侧颈部裁切与头部留白,
       result_version=CH-01-sheet-v1-ext
     ]
-    versions      = [CH-01-sheet-v1-ext 扩图版，仍属于 CH-01]
+    versions      = [CH-01-sheet-v1-ext 裁切修补版，仍属于 CH-01]
 
 不要把 `CH-01-sheet-v1-ext` 登记成新的 `CH-02`。若扩图同时改变了跨镜持续状态，另按状态版本记录；若只是某一镜的首帧扩画，结果属于该镜提交输入，不进入独立资产库。扩图与换机位的边界按 `outpainting.md` 和 `scene-continuity.md` 执行。
 
